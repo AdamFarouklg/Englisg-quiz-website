@@ -5,7 +5,8 @@
         <script>
           document.write(new Date().getFullYear())
         </script>, Powered By
-        <a href="#" target="_blank">codinganddecoding</a>.
+        <a href="#" target="_blank">Group mấy khum nhớ
+        </a>.
       </div>
     </div>
   </footer>

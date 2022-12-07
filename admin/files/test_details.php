@@ -283,35 +283,6 @@ if(!isset($_SESSION["user_id"]))
                     </div>  
                   </div>        
                 </div>
-
-                <form id="form-student-data" method="POST" action="student_test_credentials.php">
-                    <input type="hidden" name="test_id" value="<?= $test_id;?>">
-                </form>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="form-group">
-                      <button class="btn btn-primary btn-block" onclick="student_data()">GET STUDENT DATA</button>
-                    </div>
-                  </div>   
-                </div>
-
-                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                  <input type="hidden" name="other_settings">
-                  <input type="hidden" name="test_id" value="<?= $test_id;?>">
-                  <div class="form-group" style="margin-top:10px;">
-                    <label>Student Roll number / user id</label>
-                    <input type="text" class="form-control" name="student_roll_no" placeholder="Student Roll number"/>
-                  </div>
-
-                  <div class="row center-element">
-                    <div class="col-md-8">
-                      <div class="form-group">
-                        <button class="btn btn-primary btn-block">ADD</button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
               </div>
             </div>
           </div>
@@ -332,10 +303,14 @@ if(!isset($_SESSION["user_id"]))
                   <div class="col-md-4">
                     <button class="btn btn-primary btn-block btn-round" data-toggle="modal" data-target="#exampleModal" style="margin-top:0px;width:200px !important;float:right !important;">UPLOAD</button>
                   </div>
-
                   <div class="col-md-4">
                     <button class="btn btn-primary btn-block btn-round" onclick="redirect_to_add_question()" style="margin-top:0px;width:200px !important;float:right !important;">ADD NEW QUESTION</button>
                   </div>
+                  <form class="form-inline" method="post" action="export_pdf.php">
+                  <input type="hidden" name="test_id" id ="test_id" value="<?= $test_id; ?>">
+                    <button type="submit" id="pdf" name="generate_pdf" class="btn btn-primary"><i class="fa fa-pdf" "="" aria-hidden="true"></i>
+                    Generate PDF</button>
+                  </form>
                 </div>  
               </div>
               <div class="card-body">
@@ -498,37 +473,6 @@ if(!isset($_SESSION["user_id"]))
       <script type="text/javascript">
         $.notify({
           message: 'There was an error updating general settings' 
-        },{
-          type: 'danger'
-        });
-      </script>
-
-    <?php
-  }
-  else {}
-  
-  //Checking if other settings updated successfully
-  if($other_settings == "true")
-  {
-    ?>
-
-    <script type="text/javascript">
-      $.notify({
-        message: 'Student Added Successfully' 
-      },{
-        type: 'success'
-      });
-    </script>
-
-    <?php
-  }
-  else if($other_settings == "false")
-  {
-    ?>
-
-      <script type="text/javascript">
-        $.notify({
-          message: 'There was an error in adding student' 
         },{
           type: 'danger'
         });
